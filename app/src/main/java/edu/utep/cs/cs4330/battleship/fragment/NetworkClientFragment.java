@@ -12,9 +12,6 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Network;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +32,10 @@ import edu.utep.cs.cs4330.battleship.network.packet.PacketHostHandshake;
 import edu.utep.cs.cs4330.battleship.network.thread.ClientThread;
 
 import static android.app.Activity.RESULT_OK;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 
 public class NetworkClientFragment extends Fragment implements NetworkInterface {
@@ -156,6 +157,16 @@ public class NetworkClientFragment extends Fragment implements NetworkInterface 
             if (isBluetoothAction) {
                 // Discovery has found a device. Get the BluetoothDevice object and its info from the Intent.
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
                 String deviceName = device.getName();
                 if(deviceName != null) {
                     String deviceHardwareAddress = device.getAddress(); // MAC address

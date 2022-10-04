@@ -3,12 +3,13 @@ package edu.utep.cs.cs4330.battleship.fragment;
 
 import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+
+import androidx.annotation.IdRes;
+import androidx.fragment.app.Fragment;
 
 import edu.utep.cs.cs4330.battleship.R;
 import edu.utep.cs.cs4330.battleship.activity.DeploymentActivity;
