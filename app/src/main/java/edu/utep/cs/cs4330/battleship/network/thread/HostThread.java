@@ -1,11 +1,17 @@
 // Author: Jose Perez <josegperez@mail.com> and Diego Reynoso
 package edu.utep.cs.cs4330.battleship.network.thread;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.util.Log;
+
+import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -13,9 +19,12 @@ import java.util.UUID;
 import edu.utep.cs.cs4330.battleship.R;
 
 public class HostThread extends Thread {
-    private final BluetoothServerSocket mmServerSocket;
+    private BluetoothServerSocket mmServerSocket;
     private final BluetoothAdapter bluetoothAdapter;
+    //private Context mContext;
 
+    @SuppressLint("MissingPermission")
+    //public HostThread(Resources resources, Context context) {
     public HostThread(Resources resources) {
         this.bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 

@@ -1,6 +1,7 @@
 // Author: Jose Perez <josegperez@mail.com> and Diego Reynoso
 package edu.utep.cs.cs4330.battleship.fragment;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.net.Network;
@@ -41,6 +42,7 @@ public class NetworkHostFragment extends Fragment implements NetworkInterface {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         NetworkManager.registerNetworkInterface(getActivity(), this);
+
     }
 
     @Override
